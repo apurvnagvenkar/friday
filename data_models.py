@@ -1,7 +1,7 @@
 data_model = {
     'greet': {
         'position': 0,
-        'causal': {
+        'casual': {
             'data_list': ['Hi',
                           'Hello',
                           'Hey'
@@ -46,7 +46,9 @@ data_model = {
             'api_call': 'occupation',
             'count': 1
 
-        }
+        },
+                'intents': ['age', 'occupation']
+
     }
 }
 

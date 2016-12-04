@@ -12,7 +12,7 @@ def get_subdomain_from_message(msg):
     """
     intents_identified = []
     for data in data_model:
-        intents = data_model['intents']
+        intents = data_model[data]['intents']
         for intent in intents:
             data_list = data_model[data][intent]['data_list']
             phrase_match = check_intent_match_for_given_msg(data_list,msg)
@@ -42,7 +42,8 @@ def call_sentence_similarity(phrase, msg):
     :param msg:
     :return:
     """
-
+    if phrase == msg:
+        return True
     response = requests.get('https://api.dandelion.eu/datatxt/sim/v1/?text1=%s&text2=%s&token=f1c9f83338f94289a73e2e07e5382d55'
                             % (phrase, msg))
     if response:
