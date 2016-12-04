@@ -1,4 +1,4 @@
-from data_model import bot_persona, user_info, bot_user_conversation
+from data_models import bot_persona, user_info, bot_user_conversation
 
 __author__ = 'haptik'
 

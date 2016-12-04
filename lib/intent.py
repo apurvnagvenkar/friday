@@ -1,6 +1,6 @@
 import requests
 import json
-from data_model import data_model
+from data_models import data_model
 
 
 def get_subdomain_from_message(msg):
