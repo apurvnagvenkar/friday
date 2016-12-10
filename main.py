@@ -98,6 +98,11 @@ def run_june(msg, user_id):
         print '\t\t response from answer_api %s ' % response
         # call api
         # response
+        if intents[0] == 1:
+            question = QuestionApi(msg=msg, domain=domain , entities=entities, user_id=user_id)
+            response.extend(question.response)
+            bots_intent = question.bot_intent
+            bot_is_asking = True
 
         api_call = True
 
@@ -126,7 +131,7 @@ def run_june(msg, user_id):
         question = QuestionApi(msg=msg, domain=domain, entities=entities, user_id=user_id)
         if question.response:
 
-            response.append(question.response)
+            response.extend(question.response)
 
             bots_intent = question.bot_intent
             # bot ask a question
@@ -209,7 +214,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
             print 'Entities found %s ' % entities_found
             verify = VerifyApi(msg=msg, domain=domain, intent=intent, entities=entities_found, user_id=user_id)
             if verify.response:
-                response.append(verify.response)
+                response.extend(verify.response)
                 print 'response from verification: %s' % response
                 user_answered_bots_question = True
             else:
@@ -219,11 +224,15 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
     if users_position <= position_so_far:
         print '\t\t calling answer api'
         answer = AnswerApi(msg=msg, domain=domain, intent=intents[0], entities=entities, user_id=user_id)
-        response.append(answer.response)
+        response.extend(answer.response)
         print '\t\t response from answer_api %s ' % response
         # call api
         # response
-
+        if intents[0] == 1:
+            question = QuestionApi(msg=msg, domain=domain , entities=entities, user_id=user_id)
+            response.extend(question.response)
+            bots_intent = question.bot_intent
+            bot_is_asking = True
         api_call = True
 
         if threshold_to_increment_position_for_given_domain == number_of_questions_asked_for_that_domain:
