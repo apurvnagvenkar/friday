@@ -44,6 +44,7 @@ user_info = {
             'city': None,
             'studied': None
         }
+
     }
 }
 

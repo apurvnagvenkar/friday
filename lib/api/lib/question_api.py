@@ -1,4 +1,3 @@
-from data_architecture.data_model import user_info
 from mongolib import get_user_info
 
 
@@ -16,7 +15,7 @@ class QuestionApi():
         self.entities = entities
         self.domain= domain
         self.user_id = user_id
-        self.user_profile = get_user_info(self.user_id)
+        self.user_profile = get_user_info(self.user_id)[self.user_id]
         self.response = []
         self.domain = None
         self.bot_intent = []

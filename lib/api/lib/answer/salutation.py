@@ -9,7 +9,7 @@ class AnswerSalutationAPI():
         self.intent = intent
         self.entities = entities
         self.user_id = user_id
-        self.user_profile = get_user_info(self.user_id)
+        self.user_profile = get_user_info(self.user_id)[self.user_id]
         print ' %s ' % self.user_profile
 
         self.response = []
