@@ -225,6 +225,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
             verify = VerifyApi(msg=msg, domain=domain, intent=intent, entities=entities_found, user_id=user_id)
             if verify.response:
                 response.extend(verify.response)
+                bot_is_asking = False
                 unanswered_questions_by_user -=2
                 if unanswered_questions_by_user < 0:
                     unanswered_questions_by_user = 0
