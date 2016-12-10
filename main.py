@@ -91,31 +91,32 @@ def run_june(msg, user_id):
                 user_answered_bots_question = False
     print '\t\t User answered bots question is %s ' % user_answered_bots_question
     print '\t\t Users position: %s \t position so far: %s  status: %s ' % (users_position, position_so_far, users_position <= position_so_far )
-    if users_position <= position_so_far:
-        print '\t\t calling answer api'
-        answer = AnswerApi(msg=msg, domain=domain, intent=intents[0], entities=entities, user_id=user_id)
-        response.append(answer.response)
-        print '\t\t response from answer_api %s ' % response
-        # call api
-        # response
-        if len(intents) == 1:
-            question = QuestionApi(msg=msg, domain=domain , entities=entities, user_id=user_id)
-            response.extend(question.response)
-            bots_intent = question.bot_intent
-            bot_is_asking = True
+    if intents:
+        if users_position <= position_so_far:
+            print '\t\t calling answer api'
+            answer = AnswerApi(msg=msg, domain=domain, intent=intents[0], entities=entities, user_id=user_id)
+            response.append(answer.response)
+            print '\t\t response from answer_api %s ' % response
+            # call api
+            # response
+            if len(intents) == 1:
+                question = QuestionApi(msg=msg, domain=domain , entities=entities, user_id=user_id)
+                response.extend(question.response)
+                bots_intent = question.bot_intent
+                bot_is_asking = True
 
-        api_call = True
+            api_call = True
 
-        if threshold_to_increment_position_for_given_domain == number_of_questions_asked_for_that_domain:
-            print( '\t\t Incrementing position since match in threshold_to_inc and number_of_questions')
-            position_so_far += 1
+            if threshold_to_increment_position_for_given_domain == number_of_questions_asked_for_that_domain:
+                print( '\t\t Incrementing position since match in threshold_to_inc and number_of_questions')
+                position_so_far += 1
 
-        over_excited = False
-    else:
-        response.append({'type': 'text', 'message': 'Don t  get overexcited', 'stop': False})
-        print ('response sent for overexcitment %s ' % response)
-        # call overexcited_api
-        over_excited = True
+            over_excited = False
+        else:
+            response.append({'type': 'text', 'message': 'Don t  get overexcited', 'stop': False})
+            print ('response sent for overexcitment %s ' % response)
+            # call overexcited_api
+            over_excited = True
 
     if user_answered_bots_question is False and api_call is True:
         print 'user not answering bots question'
@@ -221,30 +222,33 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
                 user_answered_bots_question = False
     print '\t\t User answered bots question is %s ' % user_answered_bots_question
     print '\t\t Users position: %s \t position so far: %s  status: %s ' % (users_position, position_so_far, users_position <= position_so_far )
-    if users_position <= position_so_far:
-        print '\t\t calling answer api'
-        answer = AnswerApi(msg=msg, domain=domain, intent=intents[0], entities=entities, user_id=user_id)
-        response.extend(answer.response)
-        print '\t\t response from answer_api %s ' % response
-        # call api
-        # response
-        if len(intents) == 1:
-            question = QuestionApi(msg=msg, domain=domain , entities=entities, user_id=user_id)
-            response.extend(question.response)
-            bots_intent = question.bot_intent
-            bot_is_asking = True
-        api_call = True
 
-        if threshold_to_increment_position_for_given_domain == number_of_questions_asked_for_that_domain:
-            print( '\t\t Incrementing position since match in threshold_to_inc and number_of_questions')
-            position_so_far += 1
+    if intents:
+        if users_position <= position_so_far:
+            print '\t\t calling answer api'
+            answer = AnswerApi(msg=msg, domain=domain, intent=intents[0], entities=entities, user_id=user_id)
+            response.extend(answer.response)
+            print '\t\t response from answer_api %s ' % response
+            # call api
+            # response
+            if len(intents) == 1:
+                question = QuestionApi(msg=msg, domain=domain , entities=entities, user_id=user_id)
+                response.extend(question.response)
+                bots_intent = question.bot_intent
+                bot_is_asking = True
+            api_call = True
 
-        over_excited = False
-    else:
-        response.append({'type': 'text', 'message': 'Don t  get overexcited', 'stop': False})
-        print ('response sent for overexcitment %s ' % response)
-        # call overexcited_api
-        over_excited = True
+            if threshold_to_increment_position_for_given_domain == number_of_questions_asked_for_that_domain:
+                print( '\t\t Incrementing position since match in threshold_to_inc and number_of_questions')
+                position_so_far += 1
+
+            over_excited = False
+        else:
+            response.append({'type': 'text', 'message': 'Don t  get overexcited', 'stop': False})
+            print ('response sent for overexcitment %s ' % response)
+            # call overexcited_api
+            over_excited = True
+
 
     if user_answered_bots_question is False and api_call is True:
         print 'user not answering bots question'
