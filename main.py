@@ -203,9 +203,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         number_of_questions_asked_for_that_domain += 1
         number_of_questions_asked[domain] = number_of_questions_asked_for_that_domain
         number_of_times_intent_called[intents[0]] = number_of_times_intent_called.get(intents[0], 0) + 1
-        if number_of_times_intent_called[intents[0]] >= data_model[domain][intents[0]]['count']:
-            response.append('I am not dumb!! Why you asking same questions again and again?')
-            stop = True
+
     else:
         users_position = position_so_far
 
@@ -299,6 +297,11 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         print 'You are not answering my questions'
         response.append('You not answering my question. Bye!!!')
         stop = True
+    elif number_of_times_intent_called[intents[0]] >= data_model[domain][intents[0]]['count']:
+            response = []
+            response.append('I am not dumb!! Why you asking same questions again and again?')
+            stop = True
+
     data = {
         'intents': intents,
         'domain': domain,
