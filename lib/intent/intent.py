@@ -4,6 +4,7 @@ from data_architecture.call_intent_data import get_intent_list
 from data_architecture.data_model import data_model
 import re
 
+
 class Intent:
     def __init__(self, msg):
         self.msg = msg
@@ -11,11 +12,11 @@ class Intent:
         self.position = 0
         self.intent = []
         self.threshold_to_increment_position_for_given_domain = 0
+
     def run_intent_identification(self):
 
         self.intent = self.get_intent_from_message()
         return self.intent
-
 
     def get_intent_from_message(self):
         """
@@ -64,18 +65,19 @@ def call_sentence_similarity(phrase, msg):
     phrase = re.sub(r'[\']', '', phrase)
     msg = re.sub(r'[^\w\'\/]', ' ', msg)
     msg = re.sub(r'[\']', '', msg)
-
-    print phrase,'\t', msg
+    phrase = phrase.lower()
+    msg = msg.lower()
+    print phrase, '\t', msg
     if phrase in msg:
         return True
 
-#    if phrase.lower() == msg.lower():
-#        return True
-#    response = requests.get(
-#        'https://api.dandelion.eu/datatxt/sim/v1/?text1=%s&text2=%s&token=f1c9f83338f94289a73e2e07e5382d55'
-#        % (phrase, msg))
-#    if response:
-#        score = json.loads(response.content)['similarity']
-#        if score > 0.6:
-#            return True
+    #    if phrase.lower() == msg.lower():
+    #        return True
+    #    response = requests.get(
+    #        'https://api.dandelion.eu/datatxt/sim/v1/?text1=%s&text2=%s&token=f1c9f83338f94289a73e2e07e5382d55'
+    #        % (phrase, msg))
+    #    if response:
+    #        score = json.loads(response.content)['similarity']
+    #        if score > 0.6:
+    #            return True
     return False
