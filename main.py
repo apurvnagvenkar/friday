@@ -178,7 +178,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
     bots_intent = []
     response = []
-    previous_intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking = get_previous_info(user_id)
+    previous_intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking = get_previous_info_1(user_id)
     print '\t\t get_previous_info: \tprevious_intents: ', previous_intents, '\t domain: ', domain, '\t position_so_far: ', position_so_far, '\t unanswered_questions_by_user: ', unanswered_questions_by_user, '\tcount_of_bot_asked_questions:', count_of_bot_asked_questions, '\t bots_intent: ', bots_intent,'\t bot_is_asking: ', bot_is_asking ,'\n\n'
 
     #############################################################
@@ -277,7 +277,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
 
 
-def get_previous_info(intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking):
+def get_previous_info_1(intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking):
     return intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking
 
 # if bot is asking:
