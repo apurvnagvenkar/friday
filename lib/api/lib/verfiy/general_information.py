@@ -1,4 +1,4 @@
-from mongolib import get_user_info
+from mongolib import get_user_info, update_user_info
 
 __author__ = 'haptik'
 
@@ -28,7 +28,7 @@ class VerifyGeneralAPI():
         :return:
         """
         users_age_on_fb = self.user_profile['info']['age_verify']
-        age_given_by_user = self.entities['age']
+        age_given_by_user = int(self.entities['age'])
         msg = None
         if age_given_by_user:
             if age_given_by_user == users_age_on_fb:
@@ -40,6 +40,8 @@ class VerifyGeneralAPI():
                 msg =  'Why are you lieing to me? I can view your fb page. Its %s . \n Anyways i like people with lesser age.;)' % users_age_on_fb
             if msg:
                 self.response.append(msg)
+            update_user_info(self.user_id, {'age': age_given_by_user})
+            print 'User information after updating: %s ' % get_user_info(self.user_id)
 
     def occupation_api_call(self):
         """
@@ -55,6 +57,8 @@ class VerifyGeneralAPI():
                 msg = 'Whats up bro does your heartbeat speak?'
         if msg:
             self.response.append(msg)
+            update_user_info(self.user_id, {'occupation': occupation_given_by_user})
+            print 'User information after updating: %s ' % get_user_info(self.user_id)
 
 
     def home_api_call(self):
@@ -78,6 +82,8 @@ class VerifyGeneralAPI():
 
         if msg:
             self.response.append(msg)
+            update_user_info(self.user_id, {'home_town': home_given_by_user})
+            print 'User information after updating: %s ' % get_user_info(self.user_id)
 
     def default(self):
         """
