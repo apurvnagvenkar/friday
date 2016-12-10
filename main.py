@@ -237,7 +237,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
             # call api
             # response
             if len(intents) == 1:
-                question = QuestionApi(msg=msg, domain=domain, entities=entities, user_id=user_id)
+                question = QuestionApi(msg=msg, domain=domain, intent=intents, entities=entities, user_id=user_id)
                 response.extend(question.response)
                 bots_intent = question.bot_intent
                 bot_is_asking = True
@@ -265,7 +265,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
     if intents is None:
         print '\t\tintents is set to None \t  bot is asking question'
-        question = QuestionApi(msg=msg, domain=domain, entities=entities, user_id=user_id)
+        question = QuestionApi(msg=msg, domain=domain, intent=intents, entities=entities, user_id=user_id)
         if question.response:
             response.extend(question.response)
 
