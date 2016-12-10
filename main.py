@@ -98,7 +98,7 @@ def run_june(msg, user_id):
         print '\t\t response from answer_api %s ' % response
         # call api
         # response
-        if intents[0] == 1:
+        if len(intents) == 1:
             question = QuestionApi(msg=msg, domain=domain , entities=entities, user_id=user_id)
             response.extend(question.response)
             bots_intent = question.bot_intent
@@ -228,7 +228,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         print '\t\t response from answer_api %s ' % response
         # call api
         # response
-        if intents[0] == 1:
+        if len(intents) == 1:
             question = QuestionApi(msg=msg, domain=domain , entities=entities, user_id=user_id)
             response.extend(question.response)
             bots_intent = question.bot_intent
