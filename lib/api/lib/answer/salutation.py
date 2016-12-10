@@ -14,6 +14,7 @@ class AnswerSalutationAPI():
         dict = {
             'casual': self.casual_api_call,
             'greet': self.greet_api_call,
+            'Default': self.default
         }
 
         dict.get(intent, dict['Default'])()

@@ -15,7 +15,7 @@ __author__ = 'haptik'
 def get_previous_info(user_id):
     intents = []
     domain = None
-    users_position = -1
+    users_position = 0
     unanswered_questions_by_user = 0
     count_of_bot_asked_questions = 0
     bots_intent = []

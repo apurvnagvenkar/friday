@@ -10,7 +10,6 @@ def get_intent_list(intent):
     :param intent:
     :return:
     """
-
     dict = {
         'casual': casual_intent.intent_text,
         'greet': greet_intent.intent_text,
@@ -18,7 +17,7 @@ def get_intent_list(intent):
         'occupation': occupation_intent.intent_text,
         'Default': default
     }
-    return dict.get(intent, dict['Default'])()
+    return dict.get(intent, dict['Default'])
 
 def default():
     """
