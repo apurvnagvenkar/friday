@@ -54,12 +54,16 @@ class QuestionApi():
         if info == 'age':
             self.bot_intent.append('age')
             self.domain = 'general_information'
-            msg= 'hey wats your age'
-
+            msg= 'hey wats your age?'
         elif info == 'occupation':
             self.bot_intent.append('occupation')
             self.domain = 'general_information'
             msg= 'hey wats your occupation'
+        elif info == 'home_town':
+            self.bot_intent.append('home_town')
+            self.domain = 'general_information'
+            msg= 'hey wats your home town?'
+
         return msg
 
     def default(self):

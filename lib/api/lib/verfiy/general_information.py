@@ -16,6 +16,7 @@ class VerifyGeneralAPI():
         dict = {
             'age': self.age_api_call,
             'occupation': self.occupation_api_call,
+            'home_town': self.home_api_call,
             'Default': self.default
         }
 
@@ -55,6 +56,28 @@ class VerifyGeneralAPI():
         if msg:
             self.response.append(msg)
 
+
+    def home_api_call(self):
+        """
+
+        :return:
+        """
+        home_given_by_user = self.entities['city']
+        msg = None
+        if home_given_by_user:
+            if home_given_by_user.lower() == 'pune':
+                msg = 'Description about pune'
+            elif home_given_by_user.lower() == 'delhi':
+                msg = 'Description about delhi'
+            elif home_given_by_user.lower() == 'mumbai':
+                msg = 'Description about mumbai'
+            elif home_given_by_user.lower() == 'bengaluru':
+                msg = 'Description about bengaluru'
+            else:
+                msg =' Oh!! Nice place'
+
+        if msg:
+            self.response.append(msg)
 
     def default(self):
         """

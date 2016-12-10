@@ -35,18 +35,18 @@ data_model = {
         },
 
         'intents': ['age', 'occupation','home_town'],
-        'number_times': 2
+        'number_times': 3
 
     }
 }
 
 
 bot_persona = {
-    'age': 21,
+    'age': 22,
     'name': 'June',
     'full name': 'June May',
-    'occupation': 'engineer'
-
+    'occupation': 'Engineer',
+    'home_town': 'Pune'
 }
 
 bot_user_conversation = {
