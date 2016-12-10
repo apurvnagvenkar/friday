@@ -63,6 +63,10 @@ class QuestionApi():
             self.bot_intent.append('home_town')
             self.domain = 'general_information'
             msg= 'hey wats your home town?'
+        elif info == 'movie':
+            self.bot_intent.append('movie')
+            self.domain = 'general_information'
+            msg= 'hey wats your favouriate movie?'
 
         return msg
 

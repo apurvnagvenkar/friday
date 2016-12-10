@@ -33,9 +33,19 @@ data_model = {
             'api_call': 'home_town',
             'count': 2
         },
+        'hobbies': {
+            'name': 'hobbies',
+            'api_call': 'hobbies',
+            'count': 2
+        },
+       'movie': {
+            'name': 'movie',
+            'api_call': 'movie',
+            'count': 2
+        },
 
-        'intents': ['age', 'occupation','home_town'],
-        'number_times': 3
+        'intents': ['age', 'occupation','home_town','hobbies', 'movie'],
+        'number_times': 4
 
     }
 }
@@ -46,7 +56,8 @@ bot_persona = {
     'name': 'June',
     'full name': 'June May',
     'occupation': 'Engineer',
-    'home_town': 'Pune'
+    'home_town': 'Pune',
+    'movie': 'Dilwale Dulaniya Le Jayenge',
 }
 
 bot_user_conversation = {

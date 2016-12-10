@@ -18,6 +18,7 @@ class VerifyGeneralAPI():
             'age': self.age_api_call,
             'occupation': self.occupation_api_call,
             'home_town': self.home_api_call,
+            'movie': self.movie_api_call,
             'Default': self.default
         }
 
@@ -87,6 +88,30 @@ class VerifyGeneralAPI():
             self.response.append(msg)
             update_user_info(self.user_id, {'home_town': home_given_by_user})
             print 'User information after updating: %s ' % get_user_info(self.user_id)
+
+    def movie_api_call(self):
+        """
+
+        :return:
+        """
+        movie_given_by_user = self.entities['movie']
+        msg = None
+        if movie_given_by_user:
+            if movie_given_by_user.lower() == 'arrival':
+                msg = 'Oh nice Scifi Linguisitics'
+            elif movie_given_by_user.lower() == 'doctor Strange':
+                msg = 'Marvel Fan :) Me too'
+            elif movie_given_by_user.lower() == 'inferno':
+                msg = 'Description about mumbai'
+            elif movie_given_by_user.lower() == 'befikre':
+                msg = 'Is it  good one? I thaught its copy of Friends with benifit'
+            else:
+                msg =' Oh!! Nice but I din see it :('
+
+        if msg:
+            self.response.append(msg)
+            print 'User information after updating: %s ' % get_user_info(self.user_id)
+
 
     def default(self):
         """

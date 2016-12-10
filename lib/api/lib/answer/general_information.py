@@ -14,6 +14,7 @@ class AnswerGeneralAPI():
             'age': self.age_api_call,
             'occupation': self.occupation_api_call,
             'home_town': self.home_api_call,
+            'movie': self.movie_api_call,
             'Default': self.default
         }
 
@@ -41,6 +42,10 @@ class AnswerGeneralAPI():
         :return:
         """
         msg = 'My home town is %s. ' % bot_persona['home_town']
+        self.response.append(msg)
+
+    def movie_api_call(self):
+        msg = 'My favouriate movie  is %s!!! Tujhe dekha tho hein jana sanam!!! ' % bot_persona['movie']
         self.response.append(msg)
 
     def default(self):
