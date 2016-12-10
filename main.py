@@ -161,10 +161,12 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
     if count_of_bot_asked_questions >= threshold_of_bot_asking_questions:
         print '\t\tYou are boring '
+        response = []
         response.append('You are so boring!!! and dont want to chat with you. Why always I have to ask question')
         stop = True
     elif unanswered_questions_by_user >= threshold_of_unanswerd_questions_by_user:
         print 'You are not answering my questions'
+        response = []
         response.append('You not answering my question. Bye!!!')
         stop = True
     elif intents and number_of_times_intent_called[intents[0]] >= data_model[domain][intents[0]]['count']:

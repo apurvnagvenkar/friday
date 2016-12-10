@@ -30,7 +30,10 @@ class VerifyGeneralAPI():
         :return:
         """
         users_age_on_fb = self.user_profile['info']['age_verify']
-        age_given_by_user = int(self.entities['age'])
+        if self.entities['age']:
+            age_given_by_user = int(self.entities['age'])
+        else:
+            age_given_by_user = None
         msg = None
         if age_given_by_user:
             if age_given_by_user == users_age_on_fb:
