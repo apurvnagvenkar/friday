@@ -33,6 +33,7 @@ def check_intent_match_for_given_msg(data_list, msg):
     :return:
     """
     for phrase in data_list:
+
         phrase_found = call_sentence_similarity(phrase, msg)
         if phrase_found:
             return True
@@ -47,6 +48,8 @@ def call_sentence_similarity(phrase, msg):
     """
     if phrase == msg:
         return True
+    return False
+"""
     response = requests.get('https://api.dandelion.eu/datatxt/sim/v1/?text1=%s&text2=%s&token=f1c9f83338f94289a73e2e07e5382d55'
                             % (phrase, msg))
     if response:
@@ -55,6 +58,6 @@ def call_sentence_similarity(phrase, msg):
             return True
     return False
 
+"""
 
-
-print  get_subdomain_from_message('whats your age?')
+#print  get_subdomain_from_message('whats your age?')

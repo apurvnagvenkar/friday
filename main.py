@@ -153,16 +153,16 @@ def run_june(msg, user_id):
 
 def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswered_questions_by_user=0, count_of_bot_asked_questions=0, bots_intent=[], bot_is_asking=False):
     entities = {}
-    intents = []
-    domain = None
+    #intents = []
+    #domain = None
 
     previous_intents = []
     previous_users_position = 0
 
-    bot_is_asking = False
+    #bot_is_asking = False
     user_answered_bots_question = True
 
-    position_so_far = 0
+   # position_so_far = 0
     users_position = -1
 
     threshold_to_increment_position_for_given_domain = 2
@@ -170,15 +170,15 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
     over_excited = True
     api_call = True
-    unanswered_questions_by_user = 0
-    count_of_bot_asked_questions = 0
+    #unanswered_questions_by_user = 0
+   # count_of_bot_asked_questions = 0
 
     threshold_of_bot_asking_questions = 5
     threshold_of_unanswerd_questions_by_user = 5
 
-    bots_intent = []
+   # bots_intent = []
     response = []
-    previous_intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking = get_previous_info_1(user_id)
+    previous_intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking = get_previous_info_1(intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking)
     print '\t\t get_previous_info: \tprevious_intents: ', previous_intents, '\t domain: ', domain, '\t position_so_far: ', position_so_far, '\t unanswered_questions_by_user: ', unanswered_questions_by_user, '\tcount_of_bot_asked_questions:', count_of_bot_asked_questions, '\t bots_intent: ', bots_intent,'\t bot_is_asking: ', bot_is_asking ,'\n\n'
 
     #############################################################

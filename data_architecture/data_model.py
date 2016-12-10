@@ -11,7 +11,7 @@ data_model = {
             'api_call': 'greet',
             'count': 2
         },
-        'intents': ['casual', 'good_morning'],
+        'intents': ['casual', 'greet'],
         'number_times': 1
     },
     'general_information': {
