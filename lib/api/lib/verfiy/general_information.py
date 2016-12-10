@@ -11,9 +11,11 @@ class VerifyGeneralAPI():
         self.user_id = user_id
         self.user_profile = user_info[self.user_id]
         self.response = []
+        print entities
         dict = {
             'age': self.age_api_call,
             'occupation': self.occupation_api_call,
+            'Default': self.default
         }
 
         dict.get(intent, dict['Default'])()

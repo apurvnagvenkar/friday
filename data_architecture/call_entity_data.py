@@ -14,11 +14,11 @@ def get_entities_for_intent(intent, entities):
     'occupation': occupation_entities.entities
 
     }
-
-    for entity in entities:
+    print '******* %s %s '%(intent, entities)
+    for entity in entities['entity_data']:
         if entity in dict.get(intent, []):
             if entity:
-                entities_for_intent[entity] = entity[0]['entity_value']
+                entities_for_intent[entity] = entities['entity_data'][entity][0]['entity_value']
             else:
                 entities_for_intent[entity] = None
     return entities_for_intent
