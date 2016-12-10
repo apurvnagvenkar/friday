@@ -1,4 +1,4 @@
-from data_architecture.data_model import user_info, bot_persona
+from data_architecture.data_model import bot_persona
 
 __author__ = 'haptik'
 
@@ -9,7 +9,6 @@ class AnswerGeneralAPI():
         self.intent = intent
         self.entities = entities
         self.user_id = user_id
-        self.user_profile = user_info[self.user_id]
         self.response = []
         dict = {
             'age': self.age_api_call,

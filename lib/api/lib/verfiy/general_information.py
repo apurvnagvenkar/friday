@@ -1,4 +1,4 @@
-from data_architecture.data_model import user_info
+from mongolib import get_user_info
 
 __author__ = 'haptik'
 
@@ -9,7 +9,8 @@ class VerifyGeneralAPI():
         self.intent = intent
         self.entities = entities
         self.user_id = user_id
-        self.user_profile = user_info[self.user_id]
+        self.user_profile = get_user_info(self.user_id)
+        print ' %s ' % self.user_profile
         self.response = []
         print entities
         dict = {
@@ -31,6 +32,7 @@ class VerifyGeneralAPI():
         if age_given_by_user:
             if age_given_by_user == users_age_on_fb:
                 msg = 'Oh nice!!!'
+                # sachin
             elif age_given_by_user > users_age_on_fb:
                 msg =  'Why are you lieing to me? I can view your fb page. Its %s . \n Anyways i like people with older age.;)' % users_age_on_fb
             elif age_given_by_user < users_age_on_fb:
@@ -49,9 +51,10 @@ class VerifyGeneralAPI():
             if occupation_given_by_user.lower() == 'enginner':
                 msg = 'Nice Engineer hannh!!!'
             elif occupation_given_by_user.lower() == 'doctor':
-                msg = 'Nice Doctor hannh!!!'
+                msg = 'Whats up bro does your heartbeat speak?'
         if msg:
             self.response.append({'type': 'text', 'message': msg, 'stop': False})
+
 
     def default(self):
         """

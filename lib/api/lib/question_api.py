@@ -1,4 +1,5 @@
 from data_architecture.data_model import user_info
+from mongolib import get_user_info
 
 
 class QuestionApi():
@@ -15,7 +16,7 @@ class QuestionApi():
         self.entities = entities
         self.domain= domain
         self.user_id = user_id
-        self.user_profile = user_info[self.user_id]
+        self.user_profile = get_user_info(self.user_id)
         self.response = []
         self.domain = None
         self.bot_intent = []
@@ -39,7 +40,7 @@ class QuestionApi():
                 if info == 'age':
                     self.bot_intent.append('age')
                     self.domain = 'general_information'
-                    msg=  'hey wats your age'
+                    msg= 'hey wats your age'
 
 
                 elif info == 'occupation':
