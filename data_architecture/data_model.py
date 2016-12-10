@@ -1,60 +1,41 @@
 data_model = {
-    'greet': {
+    'salutation': {
         'position': 0,
         'casual': {
-            'data_list': ['Hi',
-                          'Hello',
-                          'Hey',
-                          'Good day'],
-
             'name': 'casual',
             'api_call': 'casual',
             'count': 2
         },
-        'good_morning': {
-            'data_list': [
-                'Good morning',
-                'Good night',
-                'Good evening'
-                'good afternoon'
-            ],
-            'name': 'good_morning',
-            'api_call': 'good_morning',
+        'greet': {
+            'name': 'greet',
+            'api_call': 'greet',
             'count': 2
         },
-        'intents': ['casual', 'good_morning']
+        'intents': ['casual', 'good_morning'],
+        'number_times': 1
     },
     'general_information': {
         'position': 1,
 
         'age': {
-            'data_list': [
-                'whats your age?',
-                'age?'
-            ],
             'name': 'age',
             'api_call': 'age',
             'count': 1
-
         },
         'occupation': {
-            'data_list': [
-                'what you do for living?',
-                'what is your occupation?'
-            ],
             'name': 'occupation',
             'api_call': 'occupation',
             'count': 1
 
         },
-                'intents': ['age', 'occupation']
+        'intents': ['age', 'occupation'],
+        'number_times': 2
 
     }
 }
 
-
 user_info = {
-    'id': {
+    'apurv': {
         'name': 'apurv',
         'info': {
             'age': None,

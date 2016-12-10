@@ -1,0 +1,42 @@
+from data_architecture.data_model import user_info, bot_persona
+
+__author__ = 'haptik'
+
+
+class AnswerSalutationAPI():
+    def __init__(self, msg, intent, entities, user_id):
+        self.msg = msg
+        self.intent = intent
+        self.entities = entities
+        self.user_id = user_id
+        self.user_profile = user_info[self.user_id]
+        self.response = []
+        dict = {
+            'casual': self.casual_api_call,
+            'greet': self.greet_api_call,
+        }
+
+        dict.get(intent, dict['Default'])()
+
+    def casual_api_call(self):
+        """
+
+        :return:
+        """
+        msg = 'Hello'
+        self.response.append({'type': 'text', 'message': msg, 'stop': False})
+
+    def greet_api_call(self):
+        """
+
+        :return:
+        """
+        msg = 'good morning'
+        self.response.append({'type': 'text', 'message': msg, 'stop': False})
+
+    def default(self):
+        """
+
+        :return:
+        """
+

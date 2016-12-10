@@ -1,4 +1,3 @@
-__author__ = 'haptik'
 
 
 
@@ -9,7 +8,7 @@ __author__ = 'haptik'
 
 # if bot is asking:
     #  if entity is present for that question
-        # Reply
+        # Reply Check verification
         # answerd_flag =True
     #   else:
         # answerd_flag = False

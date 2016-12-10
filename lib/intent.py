@@ -1,9 +1,12 @@
 import requests
 import json
+from data_architecture.call_intent_data import get_intent_list
 from data_models import data_model
 
 
-def get_subdomain_from_message(msg):
+
+
+def get_intent_from_message(msg):
     """
     Gets the intent of the message
     will return the list of intents
@@ -14,7 +17,9 @@ def get_subdomain_from_message(msg):
     for data in data_model:
         intents = data_model[data]['intents']
         for intent in intents:
-            data_list = data_model[data][intent]['data_list']
+            data_list = get_intent_list(intent)
+
+            #data_list = data_model[data][intent]['data_list']
             phrase_match = check_intent_match_for_given_msg(data_list,msg)
             if phrase_match:
                 intents_identified.append(intent)
@@ -31,9 +36,7 @@ def check_intent_match_for_given_msg(data_list, msg):
         phrase_found = call_sentence_similarity(phrase, msg)
         if phrase_found:
             return True
-        else:
-            return False
-
+    return False
 
 def call_sentence_similarity(phrase, msg):
     """
