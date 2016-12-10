@@ -50,8 +50,8 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
     over_excited = True
     api_call = True
 
-    threshold_of_bot_asking_questions = 5
-    threshold_of_unanswerd_questions_by_user = 5
+    threshold_of_bot_asking_questions = 3
+    threshold_of_unanswerd_questions_by_user = 3
 
     response = []
     stop = False
