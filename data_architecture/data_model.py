@@ -20,18 +20,18 @@ data_model = {
         'age': {
             'name': 'age',
             'api_call': 'age',
-            'count': 1
+            'count': 2
         },
         'occupation': {
             'name': 'occupation',
             'api_call': 'occupation',
-            'count': 1
+            'count': 2
 
         },
         'home_town': {
             'name': 'home_town',
             'api_call': 'home_town',
-            'count': 1
+            'count': 2
         },
 
         'intents': ['age', 'occupation','home_town'],

@@ -203,7 +203,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         number_of_questions_asked_for_that_domain = number_of_questions_asked.get(domain, 0)
         number_of_questions_asked_for_that_domain += 1
         number_of_questions_asked[domain] = number_of_questions_asked_for_that_domain
-        number_of_times_intent_called[intents[0]] += number_of_times_intent_called.get(intents[0], 0)
+        number_of_times_intent_called[intents[0]] = number_of_times_intent_called.get(intents[0], 0) + 1
         if number_of_times_intent_called[intents[0]] >= data_model[domain][intents[0]]['count']:
             response.append('I am not dumb!! Why you asking same questions again and again?')
             stop = True
@@ -333,6 +333,7 @@ def get_previous_info_from_mongo(user_id):
     bots_intent = []
     bot_is_asking = False
     number_of_questions_asked = {}
+    number_of_times_intent_called = {}
     json_data = get_user_conversation(user_id)
     print 'Json %s ' % json_data
     if json_data:

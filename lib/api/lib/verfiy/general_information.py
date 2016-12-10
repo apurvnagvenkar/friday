@@ -48,7 +48,7 @@ class VerifyGeneralAPI():
         occupation_given_by_user = self.entities['occupation']
         msg = None
         if occupation_given_by_user:
-            if occupation_given_by_user.lower() == 'enginner':
+            if occupation_given_by_user.lower() == 'engineer':
                 msg = 'Nice Engineer hannh!!!'
             elif occupation_given_by_user.lower() == 'doctor':
                 msg = 'Whats up bro does your heartbeat speak?'
