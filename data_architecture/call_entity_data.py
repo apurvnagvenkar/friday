@@ -17,7 +17,7 @@ def get_entities_for_intent(intent, entities):
     print '******* %s %s '%(intent, entities)
     for entity in entities['entity_data']:
         if entity in dict.get(intent, []):
-            if entity:
+            if entities['entity_data'][entity]:
                 entities_for_intent[entity] = entities['entity_data'][entity][0]['entity_value']
             else:
                 entities_for_intent[entity] = None
