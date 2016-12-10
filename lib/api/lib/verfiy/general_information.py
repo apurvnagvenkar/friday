@@ -42,10 +42,10 @@ class VerifyGeneralAPI():
                 msg =  'Why are you lieing to me? I can view your fb page. Its %s . \n Anyways i like people with lesser age.;)' % users_age_on_fb
             if msg:
                 self.response.append(msg)
-            self.user_info[self.user_id]['info']['age'] = age_given_by_user
-            print 'USer information changes: %s ' % self.user_info
-            update_user_info(self.user_id, {'user_id': self.user_id, self.user_id :self.user_info[self.user_id]})
-            print 'User information after updating: %s ' % get_user_info(self.user_id)
+                self.user_info[self.user_id]['info']['age'] = age_given_by_user
+                print 'USer information changes: %s ' % self.user_info
+                update_user_info(self.user_id, {'user_id': self.user_id, self.user_id :self.user_info[self.user_id]})
+                print 'User information after updating: %s ' % get_user_info(self.user_id)
 
     def occupation_api_call(self):
         """
@@ -61,7 +61,9 @@ class VerifyGeneralAPI():
                 msg = 'Whats up bro does your heartbeat speak?'
         if msg:
             self.response.append(msg)
-            update_user_info(self.user_id, {'occupation': occupation_given_by_user})
+            self.user_info[self.user_id]['info']['occupation'] = occupation_given_by_user
+            print 'USer information changes: %s ' % self.user_info
+            update_user_info(self.user_id, {'user_id': self.user_id, self.user_id :self.user_info[self.user_id]})
             print 'User information after updating: %s ' % get_user_info(self.user_id)
 
 
@@ -86,7 +88,10 @@ class VerifyGeneralAPI():
 
         if msg:
             self.response.append(msg)
-            update_user_info(self.user_id, {'home_town': home_given_by_user})
+
+            self.user_info[self.user_id]['info']['home_town'] = home_given_by_user
+            print 'USer information changes: %s ' % self.user_info
+            update_user_info(self.user_id, {'user_id': self.user_id, self.user_id :self.user_info[self.user_id]})
             print 'User information after updating: %s ' % get_user_info(self.user_id)
 
     def movie_api_call(self):
@@ -110,6 +115,9 @@ class VerifyGeneralAPI():
 
         if msg:
             self.response.append(msg)
+            self.user_info[self.user_id]['info']['movie'] = movie_given_by_user
+            print 'USer information changes: %s ' % self.user_info
+            update_user_info(self.user_id, {'user_id': self.user_id, self.user_id :self.user_info[self.user_id]})
             print 'User information after updating: %s ' % get_user_info(self.user_id)
 
 
