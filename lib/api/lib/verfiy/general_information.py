@@ -9,7 +9,8 @@ class VerifyGeneralAPI():
         self.intent = intent
         self.entities = entities
         self.user_id = user_id
-        self.user_profile = get_user_info(self.user_id)[self.user_id]
+        self.user_info = get_user_info(self.user_id)
+        self.user_profile = self.user_info[self.user_id]
         print ' %s ' % self.user_profile
         self.response = []
         print entities
@@ -40,7 +41,9 @@ class VerifyGeneralAPI():
                 msg =  'Why are you lieing to me? I can view your fb page. Its %s . \n Anyways i like people with lesser age.;)' % users_age_on_fb
             if msg:
                 self.response.append(msg)
-            update_user_info(self.user_id, {'age': age_given_by_user})
+            self.user_info[self.user_id]['info']['age'] = age_given_by_user
+            print 'USer information changes: %s ' % self.user_info
+            update_user_info(self.user_id, self.user_info)
             print 'User information after updating: %s ' % get_user_info(self.user_id)
 
     def occupation_api_call(self):
