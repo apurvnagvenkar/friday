@@ -185,8 +185,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
     response = []
     stop = False
-    previous_intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking, number_of_questions_asked, number_of_times_intent_called = get_previous_info_from_mongo(
-        user_id)
+    previous_intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking, number_of_questions_asked, number_of_times_intent_called = get_previous_info_from_mongo(user_id)
     print '\t\t get_previous_info: \tprevious_intents: ', previous_intents, '\t domain: ', domain, '\t position_so_far: ', position_so_far, '\t unanswered_questions_by_user: ', unanswered_questions_by_user, '\tcount_of_bot_asked_questions:', count_of_bot_asked_questions, '\t bots_intent: ', bots_intent, '\t bot_is_asking: ', bot_is_asking,'\t number of quesitons asked: ', number_of_questions_asked, '\n\n'
 
     #############################################################
@@ -245,7 +244,11 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
             print '\t\t response from answer_api %s ' % response
             # call api
             # response
-            if len(intents) == 1 and not bot_is_asking:
+#            F, []
+#            T,[]
+#            T,[ddd]
+#            T,[sdd]
+            if len(intents) == 1 and  (bot_is_asking == True and not bots_intent):
                 question = QuestionApi(msg=msg, domain=domain, intent=intents, entities=entities, user_id=user_id)
                 response.extend(question.response)
                 bots_intent = question.bot_intent
