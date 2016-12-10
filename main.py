@@ -198,6 +198,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         users_position = intent_object.position
         domain = intent_object.domain
         threshold_to_increment_position_for_given_domain = intent_object.threshold_to_increment_position_for_given_domain
+
         number_of_questions_asked_for_that_domain += 1
     else:
         users_position = position_so_far
