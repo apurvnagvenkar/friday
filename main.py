@@ -275,7 +275,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         print 'intent is set to previous %s ' % previous_intents
         # set current intent to previous intent
 
-    if intents is None:
+    if not intents:
         print '\t\tintents is set to None \t  bot is asking question'
         question = QuestionApi(msg=msg, domain=domain, intent=intents, entities=entities, user_id=user_id)
         if question.response:
@@ -297,7 +297,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         print 'You are not answering my questions'
         response.append('You not answering my question. Bye!!!')
         stop = True
-    elif number_of_times_intent_called[intents[0]] >= data_model[domain][intents[0]]['count']:
+    elif intents and number_of_times_intent_called[intents[0]] >= data_model[domain][intents[0]]['count']:
             response = []
             response.append('I am not dumb!! Why you asking same questions again and again?')
             stop = True
