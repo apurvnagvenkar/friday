@@ -14,6 +14,7 @@ class AnswerGeneralAPI():
         dict = {
             'age': self.age_api_call,
             'occupation': self.occupation_api_call,
+            'Default': self.default
         }
 
         dict.get(intent, dict['Default'])()
