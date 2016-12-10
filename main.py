@@ -83,13 +83,12 @@ def run_june(msg, user_id):
             entities_found = get_entities_for_intent(intent, entities)
             print 'Entities found %s ' % entities_found
             verify = VerifyApi(msg=msg, domain=domain, intent=intent, entities=entities_found, user_id=user_id)
-            response.append(verify.response)
-            print 'response from verification: %s' % response
-        # if entity is present for that question
-        # Reply Check verification
-        user_answered_bots_question = True
-    else:
-        user_answered_bots_question = False
+            if verify.response:
+                response.append(verify.response)
+                print 'response from verification: %s' % response
+                user_answered_bots_question = True
+            else:
+                user_answered_bots_question = False
     print '\t\t User answered bots question is %s ' % user_answered_bots_question
     print '\t\t Users position: %s \t position so far: %s  status: %s ' % (users_position, position_so_far, users_position <= position_so_far )
     if users_position <= position_so_far:
@@ -209,13 +208,12 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
             entities_found = get_entities_for_intent(intent, entities)
             print 'Entities found %s ' % entities_found
             verify = VerifyApi(msg=msg, domain=domain, intent=intent, entities=entities_found, user_id=user_id)
-            response.append(verify.response)
-            print 'response from verification: %s' % response
-        # if entity is present for that question
-        # Reply Check verification
-        user_answered_bots_question = True
-    else:
-        user_answered_bots_question = False
+            if verify.response:
+                response.append(verify.response)
+                print 'response from verification: %s' % response
+                user_answered_bots_question = True
+            else:
+                user_answered_bots_question = False
     print '\t\t User answered bots question is %s ' % user_answered_bots_question
     print '\t\t Users position: %s \t position so far: %s  status: %s ' % (users_position, position_so_far, users_position <= position_so_far )
     if users_position <= position_so_far:
