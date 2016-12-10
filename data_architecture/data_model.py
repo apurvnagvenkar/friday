@@ -28,7 +28,13 @@ data_model = {
             'count': 1
 
         },
-        'intents': ['age', 'occupation'],
+        'home_town': {
+            'name': 'home_town',
+            'api_call': 'home_town',
+            'count': 1
+        },
+
+        'intents': ['age', 'occupation','home_town'],
         'number_times': 2
 
     }

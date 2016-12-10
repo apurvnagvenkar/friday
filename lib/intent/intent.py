@@ -65,9 +65,12 @@ def call_sentence_similarity(phrase, msg):
     msg = re.sub(r'[^\w\'\/]', ' ', msg)
     msg = re.sub(r'[\']', '', msg)
 
-    print phrase ,'\t', msg
-    if phrase.lower() == msg.lower():
+    print phrase,'\t', msg
+    if phrase in msg:
         return True
+
+#    if phrase.lower() == msg.lower():
+#        return True
 #    response = requests.get(
 #        'https://api.dandelion.eu/datatxt/sim/v1/?text1=%s&text2=%s&token=f1c9f83338f94289a73e2e07e5382d55'
 #        % (phrase, msg))

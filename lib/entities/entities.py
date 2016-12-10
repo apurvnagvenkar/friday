@@ -7,7 +7,7 @@ class Entity():
         self.msg = msg
         self.username = 'haptik_token1_user1'
         self.access_token = 'HAPTIK07051990AWERVF'
-        self.entities = ['occupation','age']
+        self.entities = ['occupation','age','city']
 
     def run_entity_detector(self):
         url_call = ('http://bot.haptik.ai/ner/v1/tag/?username=%s&api_key=%s&entities=%s&message=%s' % (self.username, self.access_token, self.entities, self.msg))

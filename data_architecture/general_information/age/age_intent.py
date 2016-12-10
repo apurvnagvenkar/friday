@@ -1,5 +1,5 @@
 intent_text = [
-'Whats your age?',
-    'age?'
+'Whats your age',
+    'age'
 ]
 
