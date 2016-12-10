@@ -48,8 +48,8 @@ class QuestionApi():
         if msg:
             self.response.append(msg)
 
-        else:
-            self.response.append('I think i started liking you can we meet somewhere? ')
+#        else:
+#            self.response.append('I think i started liking you can we meet somewhere? ')
 
     def get_general_information(self, info):
         msg = None
