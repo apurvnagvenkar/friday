@@ -65,6 +65,7 @@ def call_sentence_similarity(phrase, msg):
     msg = re.sub(r'[^\w\'\/]', ' ', msg)
     msg = re.sub(r'[\']', '', msg)
 
+    print phrase ,'\t', msg
     if phrase.lower() == msg.lower():
         return True
 #    response = requests.get(

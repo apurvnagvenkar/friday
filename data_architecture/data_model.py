@@ -34,19 +34,6 @@ data_model = {
     }
 }
 
-user_info = {
-    'apurv': {
-        'name': 'apurv',
-        'info': {
-            'age': None,
-            'age_verify': 25,
-            'occupation': None,
-            'city': None,
-            'studied': None
-        }
-
-    }
-}
 
 bot_persona = {
     'age': 21,
@@ -65,6 +52,20 @@ bot_user_conversation = {
         'sub_domain': None,
         'score': 0,
         'position': 0,
+
+    }
+}
+
+user_info = {
+    'apurv': {
+        'name': 'apurv',
+        'info': {
+            'age': None,
+            'age_verify': 25,
+            'occupation': None,
+            'city': None,
+            'studied': None
+        }
 
     }
 }

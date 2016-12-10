@@ -41,7 +41,6 @@ class QuestionApi():
                     self.domain = 'general_information'
                     msg= 'hey wats your age'
 
-
                 elif info == 'occupation':
                     self.bot_intent.append('occupation')
                     self.domain = 'general_information'
