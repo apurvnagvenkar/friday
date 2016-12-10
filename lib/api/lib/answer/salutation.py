@@ -1,4 +1,4 @@
-from data_architecture.data_model import user_info, bot_persona
+from mongolib import get_user_info
 
 __author__ = 'haptik'
 
@@ -9,7 +9,9 @@ class AnswerSalutationAPI():
         self.intent = intent
         self.entities = entities
         self.user_id = user_id
-        self.user_profile = user_info[self.user_id]
+        self.user_profile = get_user_info(self.user_id)
+        print ' %s ' % self.user_profile
+
         self.response = []
         dict = {
             'casual': self.casual_api_call,
