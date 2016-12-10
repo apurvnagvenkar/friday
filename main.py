@@ -164,7 +164,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
     # unanswered_questions_by_user = 0
     # count_of_bot_asked_questions = 0
     # bots_intent = []
-
+    bot_asking_dummy  = True
     entities = {}
 
     previous_intents = []
@@ -241,6 +241,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
             print '\t\t calling answer api'
             answer = AnswerApi(msg=msg, domain=domain, intent=intents[0], entities=entities, user_id=user_id)
             response.extend(answer.response)
+            bot_asking_dummy = False
             print '\t\t response from answer_api %s ' % response
             # call api
             # response
@@ -248,7 +249,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 #            T,[]
 #            T,[ddd]
 #            T,[sdd]
-            if len(intents) == 1 and  (bot_is_asking == False and not bots_intent):
+            if len(intents) == 1 and bot_asking_dummy:
                 question = QuestionApi(msg=msg, domain=domain, intent=intents, entities=entities, user_id=user_id)
                 response.extend(question.response)
                 bots_intent = question.bot_intent
