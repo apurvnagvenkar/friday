@@ -27,7 +27,8 @@ class AnswerSalutationAPI():
         :return:
         """
         msg = 'Hello'
-        self.response.append({'type': 'text', 'message': msg, 'stop': False})
+        self.response.append(msg)
+
 
     def greet_api_call(self):
         """
@@ -35,7 +36,7 @@ class AnswerSalutationAPI():
         :return:
         """
         msg = 'good morning'
-        self.response.append({'type': 'text', 'message': msg, 'stop': False})
+        self.response.append(msg)
 
     def default(self):
         """

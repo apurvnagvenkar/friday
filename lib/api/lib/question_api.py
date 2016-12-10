@@ -46,7 +46,7 @@ class QuestionApi():
 
 
         if msg:
-            self.response.append({'type': 'text', 'message': msg, 'stop': False})
+            self.response.append(msg)
 
 
     def get_general_information(self, info):

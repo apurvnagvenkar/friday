@@ -1,4 +1,5 @@
 from data_architecture.call_entity_data import get_entities_for_intent
+from data_architecture.data_model import data_model
 from lib.api.lib.answer_api import AnswerApi
 from lib.api.lib.question_api import QuestionApi
 from lib.api.lib.verify_api import VerifyApi
@@ -183,7 +184,8 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
     threshold_of_unanswerd_questions_by_user = 5
 
     response = []
-    previous_intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking, number_of_questions_asked = get_previous_info_from_mongo(
+    stop = False
+    previous_intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking, number_of_questions_asked, number_of_times_intent_called = get_previous_info_from_mongo(
         user_id)
     print '\t\t get_previous_info: \tprevious_intents: ', previous_intents, '\t domain: ', domain, '\t position_so_far: ', position_so_far, '\t unanswered_questions_by_user: ', unanswered_questions_by_user, '\tcount_of_bot_asked_questions:', count_of_bot_asked_questions, '\t bots_intent: ', bots_intent, '\t bot_is_asking: ', bot_is_asking,'\t number of quesitons asked: ', number_of_questions_asked, '\n\n'
 
@@ -201,7 +203,10 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         number_of_questions_asked_for_that_domain = number_of_questions_asked.get(domain, 0)
         number_of_questions_asked_for_that_domain += 1
         number_of_questions_asked[domain] = number_of_questions_asked_for_that_domain
-
+        number_of_times_intent_called[intents[0]] += number_of_times_intent_called.get(intents[0], 0)
+        if number_of_times_intent_called[intents[0]] >= data_model[domain][intents[0]]['count']:
+            response.append('I am not dumb!! Why you asking same questions again and again?')
+            stop = True
     else:
         users_position = position_so_far
 
@@ -220,6 +225,9 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
             verify = VerifyApi(msg=msg, domain=domain, intent=intent, entities=entities_found, user_id=user_id)
             if verify.response:
                 response.extend(verify.response)
+                unanswered_questions_by_user -=2
+                if unanswered_questions_by_user < 0:
+                    unanswered_questions_by_user = 0
                 print 'response from verification: %s' % response
                 user_answered_bots_question = True
             else:
@@ -249,14 +257,15 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
             over_excited = False
         else:
-            response.append({'type': 'text', 'message': 'Don t  get overexcited', 'stop': False})
+            response.append('Don t  get overexcited')
+
             print ('response sent for overexcitment %s ' % response)
             # call overexcited_api
             over_excited = True
 
     if user_answered_bots_question is False and api_call is True:
         print 'user not answering bots question'
-        response.append({'type': 'text', 'message': 'Why are you not answering my questions?', 'stop': False})
+        response.append('Why are you not answering my questions?')
         unanswered_questions_by_user += 1
         intents = previous_intents
         print 'unanswered questions by user %s' % unanswered_questions_by_user
@@ -279,13 +288,12 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
     if count_of_bot_asked_questions >= threshold_of_bot_asking_questions:
         print '\t\tYou are boring '
-        response.append({'type': 'text',
-                         'message': 'You are so boring!!! and dont want to chat with you. Why always I have to ask question',
-                         'stop': True})
+        response.append('You are so boring!!! and dont want to chat with you. Why always I have to ask question')
+        stop = True
     elif unanswered_questions_by_user >= threshold_of_unanswerd_questions_by_user:
         print 'You are not answering my questions'
-        response.append({'type': 'text', 'message': 'You not answering my question. Bye!!!', 'stop': True})
-
+        response.append('You not answering my question. Bye!!!')
+        stop = True
     data = {
         'intents': intents,
         'domain': domain,
@@ -295,13 +303,20 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         'bots_intent': bots_intent,
         'bot_is_asking': bot_is_asking,
         'user_id': user_id,
-        'number_of_questions_asked': number_of_questions_asked
-
+        'number_of_questions_asked': number_of_questions_asked,
+        'number_of_times_intent_called': number_of_times_intent_called
     }
     print data
     store_previous_info_of_user(user_id, data)
     print intents, ',', domain, ',', position_so_far, ',', unanswered_questions_by_user, ',', count_of_bot_asked_questions, ',', bots_intent, ',', bot_is_asking
-    return response
+
+    response_dict = []
+    if response:
+        for r in response:
+            response_dict.append({'type': 'text', 'message':r, 'stop':stop })
+    else:
+        response_dict.append({'type': 'text', 'message':'Didnt get it', 'stop':stop })
+    return response_dict
 
 
 def get_previous_info_1(intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions,
@@ -330,7 +345,8 @@ def get_previous_info_from_mongo(user_id):
         bots_intent = data['bots_intent']
         bot_is_asking = data['bot_is_asking']
         number_of_questions_asked = data['number_of_questions_asked']
-    return intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking, number_of_questions_asked
+        number_of_times_intent_called = data['number_of_times_intent_called']
+    return intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking, number_of_questions_asked, number_of_times_intent_called
 
 
 def store_previous_info_of_user(user_id, data):

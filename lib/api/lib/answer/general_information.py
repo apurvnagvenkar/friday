@@ -24,7 +24,7 @@ class AnswerGeneralAPI():
         :return:
         """
         msg = 'My age is %s. ' % bot_persona['age']
-        self.response.append({'type': 'text', 'message': msg, 'stop': False})
+        self.response.append(msg)
 
     def occupation_api_call(self):
         """
@@ -32,7 +32,7 @@ class AnswerGeneralAPI():
         :return:
         """
         msg = 'My occupation is %s. ' % bot_persona['occupation']
-        self.response.append({'type': 'text', 'message': msg, 'stop': False})
+        self.response.append(msg)
 
     def default(self):
         """
