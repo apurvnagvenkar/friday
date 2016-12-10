@@ -249,7 +249,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 #            T,[]
 #            T,[ddd]
 #            T,[sdd]
-            if len(intents) == 1 and bot_asking_dummy:
+            if len(intents) == 1 and not bot_asking_dummy:
                 question = QuestionApi(msg=msg, domain=domain, intent=intents, entities=entities, user_id=user_id)
                 response.extend(question.response)
                 bots_intent = question.bot_intent
