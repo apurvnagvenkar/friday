@@ -289,7 +289,9 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         'unanswered_questions_by_user': unanswered_questions_by_user,
         'count_of_bot_asked_questions': count_of_bot_asked_questions,
         'bots_intent': bots_intent,
-        'bot_is_asking': bot_is_asking
+        'bot_is_asking': bot_is_asking,
+        'user_id': user_id
+
 
     }
     print data
@@ -323,6 +325,7 @@ def get_previous_info_from_mongo(user_id):
         count_of_bot_asked_questions = data['count_of_bot_asked_questions']
         bots_intent = data['bots_intent']
         bot_is_asking = data['bot_is_asking']
+
     return intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking
 
 
