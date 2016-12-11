@@ -35,7 +35,7 @@ class AnswerSalutationAPI():
 
         :return:
         """
-        msg = 'good morning'
+        msg = 'Good Morning'
         self.response.append({'type':'text', 'message':msg, 'stop':False})
 
     def default(self):

@@ -20,7 +20,7 @@ class AnswerFlirtyAPI():
 
         :return:
         """
-        msg = 'Heehee :‑D !!! You are so cheesy  ;‑)'
+        msg = 'Hehe :-D You are so cheesy  ;-)'
         self.response.append({'type':'text', 'message':msg, 'stop':False})
 
     def love_api_call(self):
@@ -37,8 +37,8 @@ class AnswerFlirtyAPI():
         :return:
         """
     def rude_api_call(self):
-        msg = 'You are disgusting!!! \n Bye, learn some manners and then come back!!! '
-        self.response.append({'type':'text', 'message':msg, 'stop':True, 'stop_message': 'TIP: Never abuse a women. Speak politely and genetly to win their hearts !!!' })
+        msg = 'You are disgusting! Learn some manners and then come back!'
+        self.response.append({'type':'text', 'message':msg, 'stop':True, 'stop_message': 'Never abuse a women. Speak politely and genetly to win her hearts !!!' })
 
 
     def default(self):

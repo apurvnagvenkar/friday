@@ -3,6 +3,7 @@ intent_text = [
     'Hello',
     'Hello June',
     'Hi June May',
-    'Hello June May'
+    'Hello June May',
+    'Hey'
 ]
 

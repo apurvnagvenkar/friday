@@ -1,5 +1,5 @@
 intent_text = [
-'I’ve already fallen for you',
+'Ive already fallen for you',
 'I have already fallen for you',
 'Are you a magician? Because whenever I look at you everyone else disappears.',
 'Are you a magician?',
