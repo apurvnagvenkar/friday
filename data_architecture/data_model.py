@@ -47,6 +47,33 @@ data_model = {
         'intents': ['age', 'occupation','home_town','hobbies', 'movie'],
         'number_times': 4
 
+    },
+    'flirty': {
+        'position': 0,
+        'cheesy': {
+            'name': 'cheesy',
+            'api_call': 'cheesy',
+            'count': 3
+        },
+        'love': {
+            'name': 'love',
+            'api_call': 'love',
+            'count': 3
+        },
+        'rude':{
+            'name': 'rude',
+            'api_call': 'rude',
+            'count': 3
+        },
+        'out':{
+            'name': 'out',
+            'api_call': 'out',
+            'count': 3
+        },
+
+
+        'intents': ['cheesy', 'love','rude', 'out'],
+        'number_times': 10
     }
 }
 

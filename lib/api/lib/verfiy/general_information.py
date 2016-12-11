@@ -38,7 +38,6 @@ class VerifyGeneralAPI():
         if age_given_by_user:
             if age_given_by_user == users_age_on_fb:
                 msg = 'Oh nice!!!'
-                # sachin
             elif age_given_by_user > users_age_on_fb:
                 msg =  'Why are you lieing to me? I can view your fb page. Its %s . \n Anyways i like people with older age.;)' % users_age_on_fb
             elif age_given_by_user < users_age_on_fb:
@@ -62,6 +61,9 @@ class VerifyGeneralAPI():
                 msg = 'Nice Engineer hannh!!!'
             elif occupation_given_by_user.lower() == 'doctor':
                 msg = 'Whats up bro does your heartbeat speak?'
+            elif occupation_given_by_user.lower() == 'architect':
+                msg = 'Whats architect'
+
         if msg:
             self.response.append({'type':'text', 'message':msg, 'stop':False})
             self.user_info[self.user_id]['info']['occupation'] = occupation_given_by_user

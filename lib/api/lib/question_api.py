@@ -47,7 +47,7 @@ class QuestionApi():
 
         if msg:
             if self.quick_responses:
-                self.response.append({'type':'payload', 'quick_replies':self.quick_responses, 'stop':False })
+                self.response.append({'type':'payload', 'text':msg, 'quick_replies':self.quick_responses, 'stop':False })
             else:
                 self.response.append({'type':'text', 'message': msg, 'stop': False})
 

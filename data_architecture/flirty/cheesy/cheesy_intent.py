@@ -7,8 +7,11 @@ intent_text = [
 'can I call you mine?',
 'Were do you hide your wings?',
 'hide your wings?'
-
-
-
+'You look exactly like my future ex-wife.',
+'You look exactly like my future exwife.',
+'You look exactly like my future ex wife.',
+'like my ex wife',
+'aati kya khandala',
+'khandala',
 ]
 
