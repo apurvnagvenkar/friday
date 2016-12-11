@@ -44,7 +44,7 @@ class VerifyGeneralAPI():
             elif age_given_by_user < users_age_on_fb:
                 msg =  'Why are you lieing to me? I can view your fb page. Its %s . \n Anyways i like people with lesser age.;)' % users_age_on_fb
             if msg:
-                self.response.append(msg)
+                self.response.append({'type':'text', 'message':msg, 'stop':False})
                 self.user_info[self.user_id]['info']['age'] = age_given_by_user
                 print 'USer information changes: %s ' % self.user_info
                 update_user_info(self.user_id, {'user_id': self.user_id, self.user_id :self.user_info[self.user_id]})
@@ -63,7 +63,7 @@ class VerifyGeneralAPI():
             elif occupation_given_by_user.lower() == 'doctor':
                 msg = 'Whats up bro does your heartbeat speak?'
         if msg:
-            self.response.append(msg)
+            self.response.append({'type':'text', 'message':msg, 'stop':False})
             self.user_info[self.user_id]['info']['occupation'] = occupation_given_by_user
             print 'USer information changes: %s ' % self.user_info
             update_user_info(self.user_id, {'user_id': self.user_id, self.user_id :self.user_info[self.user_id]})
@@ -90,7 +90,8 @@ class VerifyGeneralAPI():
                 msg =' Oh!! Nice place'
 
         if msg:
-            self.response.append(msg)
+            self.response.append({'type':'text', 'message':msg, 'stop':False})
+
 
             self.user_info[self.user_id]['info']['home_town'] = home_given_by_user
             print 'USer information changes: %s ' % self.user_info
@@ -117,7 +118,7 @@ class VerifyGeneralAPI():
                 msg =' Oh!! Nice but I din see it :('
 
         if msg:
-            self.response.append(msg)
+            self.response.append({'type':'text', 'message':msg, 'stop':False})
             self.user_info[self.user_id]['info']['movie'] = movie_given_by_user
             print 'USer information changes: %s ' % self.user_info
             update_user_info(self.user_id, {'user_id': self.user_id, self.user_id :self.user_info[self.user_id]})

@@ -20,7 +20,7 @@ class QuestionApi():
         self.domain = None
         self.bot_intent = []
         self.intent = intent
-
+        self.quick_responses = []
         dict = {
             'general_information': self.general_information,
             'Default': self.default
@@ -46,7 +46,10 @@ class QuestionApi():
 
 
         if msg:
-            self.response.append(msg)
+            if self.quick_responses:
+                self.response.append({'type':'payload', 'quick_replies':self.quick_responses, 'stop':False })
+            else:
+                self.response.append({'type':'text', 'message': msg, 'stop': False})
 
 #        else:
 #            self.response.append('I think i started liking you can we meet somewhere? ')
@@ -61,6 +64,22 @@ class QuestionApi():
             self.bot_intent.append('occupation')
             self.domain = 'general_information'
             msg= 'hey wats your occupation'
+            self.quick_responses = [
+                {
+                  "content_type":"text",
+                    "title":"Doctor",
+                    "payload":"Doctor"
+            },{
+                  "content_type":"text",
+                    "title":"Engineer",
+                    "payload":"Engineer"
+            },
+              {
+                  "content_type":"text",
+                    "title":"Architect",
+                    "payload":"Architect"
+            }]
+
         elif info == 'home_town':
             self.bot_intent.append('home_town')
             self.domain = 'general_information'
@@ -69,7 +88,29 @@ class QuestionApi():
             self.bot_intent.append('movie')
             self.domain = 'general_information'
             msg= 'hey wats your favouriate movie?'
+            self.quick_responses = [
+                {
+                  "content_type":"text",
+                    "title":"Arrival",
+                    "payload":"Arrival"
+            },{
+                  "content_type":"text",
+                    "title":"Doctor Strange",
+                    "payload":"Doctor Strange"
+            },
+              {
+                  "content_type":"text",
+                    "title":"Befikre",
+                    "payload":"Befikre"
+            },
+              {
+                  "content_type":"text",
+                    "title":"Inferno",
+                    "payload":"Inferno"
+            },
 
+
+            ]
         return msg
 
     def default(self):
