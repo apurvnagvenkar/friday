@@ -3,5 +3,6 @@ intent_text = [
     'sex',
     'fuck',
     'bitch',
+    'f**k',
 ]
 

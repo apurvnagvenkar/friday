@@ -191,8 +191,13 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
     print intents, ',', domain, ',', position_so_far, ',', unanswered_questions_by_user, ',', count_of_bot_asked_questions, ',', bots_intent, ',', bot_is_asking
 
     if not response:
-        response.append({'type': 'text', 'message':'What!?', 'stop':stop })
-    print response
+        if 'sorry'in msg.lower():
+            response.append({'type': 'text', 'message':'Its okay, but dont say that again!', 'stop':False})
+        elif 'how are you' in msg.lower() or 'how are u' in msg.lower() or'how r u' in msg.lower():
+            response.append({'type': 'text', 'message':'I am fine :) !!!', 'stop':False })
+        else:
+            response.append({'type': 'text', 'message':'What!?', 'stop':False})
+
     return response
 
 

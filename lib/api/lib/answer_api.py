@@ -1,3 +1,4 @@
+from lib.api.lib.answer.flirty import AnswerFlirtyAPI
 from lib.api.lib.answer.general_information import AnswerGeneralAPI
 from lib.api.lib.answer.salutation import AnswerSalutationAPI
 from lib.api.lib.verfiy.general_information import VerifyGeneralAPI
@@ -24,6 +25,7 @@ class AnswerApi():
         dict = {
             'general_information': self.general_information,
             'salutation': self.salutation,
+            'flirty': self.flirty,
             'Default': self.default
         }
 
@@ -48,6 +50,14 @@ class AnswerApi():
         v=AnswerSalutationAPI(self.msg, self.intent, self.entities, self.user_id)
         self.response = v.response
 
+    def flirty(self):
+        """
+
+        :return:
+        """
+
+        v=AnswerFlirtyAPI(self.msg, self.intent, self.entities, self.user_id)
+        self.response = v.response
 
     def default(self):
         """
