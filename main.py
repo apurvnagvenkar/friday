@@ -47,6 +47,8 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
     threshold_to_increment_position_for_given_domain = 2
     number_of_questions_asked_for_that_domain = 0
 
+    score_of_user = 0
+
     over_excited = True
     api_call = True
 
@@ -55,8 +57,8 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
     response = []
     stop = False
-    previous_intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking, number_of_questions_asked, number_of_times_intent_called = get_previous_info_from_mongo(user_id)
-    print '\t\t get_previous_info: \tprevious_intents: ', previous_intents, '\t domain: ', domain, '\t position_so_far: ', position_so_far, '\t unanswered_questions_by_user: ', unanswered_questions_by_user, '\tcount_of_bot_asked_questions:', count_of_bot_asked_questions, '\t bots_intent: ', bots_intent, '\t bot_is_asking: ', bot_is_asking,'\t number of quesitons asked: ', number_of_questions_asked, '\n\n'
+    previous_intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking, number_of_questions_asked, number_of_times_intent_called, score_of_user = get_previous_info_from_mongo(user_id)
+    print '\t\t get_previous_info: \tprevious_intents: ', previous_intents, '\t domain: ', domain, '\t position_so_far: ', position_so_far, '\t unanswered_questions_by_user: ', unanswered_questions_by_user, '\tcount_of_bot_asked_questions:', count_of_bot_asked_questions, '\t bots_intent: ', bots_intent, '\t bot_is_asking: ', bot_is_asking,'\t number of quesitons asked: ', number_of_questions_asked,'\t score of user: ', score_of_user, '\n\n'
 
     #############################################################
     entity_object = Entity(msg)
@@ -216,6 +218,7 @@ def get_previous_info_from_mongo(user_id):
     bot_is_asking = False
     number_of_questions_asked = {}
     number_of_times_intent_called = {}
+    score_of_user = 0
     json_data = get_user_conversation(user_id)
     print 'Json %s ' % json_data
     if json_data:
@@ -229,7 +232,8 @@ def get_previous_info_from_mongo(user_id):
         bot_is_asking = data['bot_is_asking']
         number_of_questions_asked = data['number_of_questions_asked']
         number_of_times_intent_called = data['number_of_times_intent_called']
-    return intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking, number_of_questions_asked, number_of_times_intent_called
+        score_of_user = data['score_of_user']
+    return intents, domain, position_so_far, unanswered_questions_by_user, count_of_bot_asked_questions, bots_intent, bot_is_asking, number_of_questions_asked, number_of_times_intent_called, score_of_user
 
 
 def store_previous_info_of_user(user_id, data):
