@@ -28,8 +28,9 @@ class Intent:
         for data in data_model:
             intents = data_model[data]['intents']
             for intent in intents:
+                print intent
                 data_list = get_intent_list(intent)
-
+                print data_list
                 # data_list = data_model[data][intent]['data_list']
                 phrase_match = check_intent_match_for_given_msg(data_list, self.msg)
                 if phrase_match:
