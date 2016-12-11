@@ -192,7 +192,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
     if not response:
         response.append({'type': 'text', 'message':'Didnt get it', 'stop':stop })
-
+    print response
     return response
 
 
