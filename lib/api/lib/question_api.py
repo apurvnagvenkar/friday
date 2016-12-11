@@ -83,11 +83,11 @@ class QuestionApi():
         elif info == 'home_town':
             self.bot_intent.append('home_town')
             self.domain = 'general_information'
-            msg= 'hey wats your home town?'
+            msg= 'Which is your home town?'
         elif info == 'movie':
             self.bot_intent.append('movie')
             self.domain = 'general_information'
-            msg= 'hey wats your favouriate movie?'
+            msg= 'Which is your favourite movie?'
             self.quick_responses = [
                 {
                   "content_type":"text",
