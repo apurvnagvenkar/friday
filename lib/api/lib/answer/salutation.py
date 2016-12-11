@@ -1,4 +1,4 @@
-from data_architecture.data_model import user_info, bot_persona
+from mongolib import get_user_info
 
 __author__ = 'haptik'
 
@@ -9,7 +9,9 @@ class AnswerSalutationAPI():
         self.intent = intent
         self.entities = entities
         self.user_id = user_id
-        self.user_profile = user_info[self.user_id]
+        self.user_profile = get_user_info(self.user_id)[self.user_id]
+        print ' %s ' % self.user_profile
+
         self.response = []
         dict = {
             'casual': self.casual_api_call,
@@ -25,15 +27,16 @@ class AnswerSalutationAPI():
         :return:
         """
         msg = 'Hello'
-        self.response.append({'type': 'text', 'message': msg, 'stop': False})
+        self.response.append({'type':'text', 'message':msg, 'stop':False})
+
 
     def greet_api_call(self):
         """
 
         :return:
         """
-        msg = 'good morning'
-        self.response.append({'type': 'text', 'message': msg, 'stop': False})
+        msg = 'Good Morning'
+        self.response.append({'type':'text', 'message':msg, 'stop':False})
 
     def default(self):
         """
