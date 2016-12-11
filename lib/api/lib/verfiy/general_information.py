@@ -39,9 +39,9 @@ class VerifyGeneralAPI():
             if age_given_by_user == users_age_on_fb:
                 msg = 'Oh nice!!!'
             elif age_given_by_user > users_age_on_fb:
-                msg =  'Why are you lying to me? I can view your fb page. Its %s . \n Anyways i like people with older age.;)' % users_age_on_fb
+                msg =  'Why are you lying to me? :/ I can view your profile. Its %s . \n Anyways I like people with older age. ;)' % users_age_on_fb
             elif age_given_by_user < users_age_on_fb:
-                msg =  'Why are you lieing to me? I can view your fb page. Its %s . \n Anyways i like people with lesser age.;)' % users_age_on_fb
+                msg =  'Why are you lying to me? :/ I can view your profile. Its %s . \n Anyways I like people with lesser age. ;)' % users_age_on_fb
             if msg:
                 self.response.append({'type':'text', 'message':msg, 'stop':False})
                 self.user_info[self.user_id]['info']['age'] = age_given_by_user
@@ -58,11 +58,11 @@ class VerifyGeneralAPI():
         msg = None
         if occupation_given_by_user:
             if occupation_given_by_user.lower() == 'engineer':
-                msg = 'Nice Engineer hannh!!!'
+                msg = 'Nice Engineer hannh!'
             elif occupation_given_by_user.lower() == 'doctor':
-                msg = 'Whats up bro does your heartbeat speak?'
+                msg = 'Whats up bro does your heartbeat speak? :D'
             elif occupation_given_by_user.lower() == 'lawyer':
-                msg = 'Nice Lawyer!!!'     
+                msg = 'There are two kinds of lawyers - those who know the law and those who know the judge :D'
 
         if msg:
             self.response.append({'type':'text', 'message':msg, 'stop':False})
@@ -81,13 +81,13 @@ class VerifyGeneralAPI():
         msg = None
         if home_given_by_user:
             if home_given_by_user.lower() == 'pune':
-                msg = 'Description about pune'
+                msg = 'Oh! Puneri!'
             elif home_given_by_user.lower() == 'delhi':
-                msg = 'Description about delhi'
+                msg = 'Dilwalon Ki Delhi...'
             elif home_given_by_user.lower() == 'mumbai':
-                msg = 'Description about mumbai'
+                msg = 'Amchi Mumbai!'
             elif home_given_by_user.lower() == 'bengaluru':
-                msg = 'Description about bengaluru'
+                msg = 'If Bangalore were a girl, she wont be the hottest but still surely the loveliest..!'
             else:
                 msg =' Oh!! Nice place'
 
@@ -109,13 +109,13 @@ class VerifyGeneralAPI():
         msg = None
         if movie_given_by_user:
             if movie_given_by_user.lower() == 'arrival':
-                msg = 'Oh nice Scifi Linguisitics'
+                msg = 'Oh nice! Scifi Linguisitics'
             elif movie_given_by_user.lower() == 'doctor Strange':
-                msg = 'Marvel Fan :) Me too'
+                msg = 'Marvel Fan! Me too :D'
             elif movie_given_by_user.lower() == 'inferno':
-                msg = 'Description about mumbai'
+                msg = 'Yes its a great movie.'
             elif movie_given_by_user.lower() == 'befikre':
-                msg = 'Is it  good one? I thaught its copy of Friends with benifit'
+                msg = 'Is it good? I thaught its copy of Friends with benifit'
             else:
                 msg =' Oh!! Nice but I din see it :('
 
