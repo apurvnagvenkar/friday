@@ -62,7 +62,7 @@ class VerifyGeneralAPI():
                 msg = 'Nice Engineer hannh!!!'
             elif occupation_given_by_user.lower() == 'doctor':
                 msg = 'Whats up bro does your heartbeat speak?'
-          elif occupation_given_by_user.lower() == 'lawyer':                                                          
+            elif occupation_given_by_user.lower() == 'lawyer':                                                          
                 msg = 'Nice Lawyer!!!'     
 
         if msg:
