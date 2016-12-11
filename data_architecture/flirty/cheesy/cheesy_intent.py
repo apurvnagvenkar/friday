@@ -13,5 +13,6 @@ intent_text = [
 'like my ex wife',
 'aati kya khandala',
 'khandala',
+ 'magician',
 ]
 
