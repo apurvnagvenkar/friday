@@ -109,8 +109,10 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
     if intents:
         if users_position <= position_so_far:
             print '\t\t calling answer api'
-            answer = AnswerApi(msg=msg, domain=domain, intent=intents[0], entities=entities, user_id=user_id)
+            answer = AnswerApi(msg=msg, domain=domain, intent=intents[0], entities=entities, user_id=user_id, score=score_of_user)
             response.extend(answer.response)
+            score_of_user =answer.score
+
             bot_asking_dummy = False
             print '\t\t response from answer_api %s ' % response
             # call api
@@ -175,6 +177,9 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         response = []
         response.append({'type': 'text', 'message':'I just told a while ago, why do you keep repeating? -_-', 'stop':True, 'stop_message': 'Pay attention to what you talk or she might feel you are not interested.'})
         stop = True
+    elif score_of_user > 5:
+        response = []
+        response.append({'type':'text', 'message': 'Ya sure! What about next Weekend? ', 'stop': True, 'stop_message': 'Congrats! You my friend are real date :) ;)  '})
 
     data = {
         'intents': intents,
@@ -186,7 +191,8 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
         'bot_is_asking': bot_is_asking,
         'user_id': user_id,
         'number_of_questions_asked': number_of_questions_asked,
-        'number_of_times_intent_called': number_of_times_intent_called
+        'number_of_times_intent_called': number_of_times_intent_called,
+        'score_of_user': score_of_user
     }
     print data
     store_previous_info_of_user(user_id, data)
@@ -197,6 +203,8 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
             response.append({'type': 'text', 'message':'Its okay, but dont say that again!', 'stop':False})
         elif 'how are you' in msg.lower() or 'how are u' in msg.lower() or'how r u' in msg.lower():
             response.append({'type': 'text', 'message':'I am fine :) !!!', 'stop':False })
+        elif 'hahaha' in msg.lower() or 'hehe' in msg.lower() or ':)' in msg.lower():
+            response.append({'type': 'text', 'message':':) !!!', 'stop':False })
         else:
             response.append({'type': 'text', 'message':'What!?', 'stop':False})
 

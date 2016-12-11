@@ -11,7 +11,7 @@ class AnswerSalutationAPI():
         self.user_id = user_id
         self.user_profile = get_user_info(self.user_id)[self.user_id]
         print ' %s ' % self.user_profile
-
+        self.score = 0
         self.response = []
         dict = {
             'casual': self.casual_api_call,
@@ -26,9 +26,9 @@ class AnswerSalutationAPI():
 
         :return:
         """
-        msg = 'Hello'
+        msg = 'Hello :)'
         self.response.append({'type':'text', 'message':msg, 'stop':False})
-
+        self.score = 1
 
     def greet_api_call(self):
         """
@@ -37,6 +37,7 @@ class AnswerSalutationAPI():
         """
         msg = 'Good Morning'
         self.response.append({'type':'text', 'message':msg, 'stop':False})
+        self.score = 1
 
     def default(self):
         """

@@ -60,9 +60,10 @@ class AnswerApi():
         :return:
         """
 
-        v=AnswerFlirtyAPI(self.msg, self.intent, self.entities, self.user_id)
+        v=AnswerFlirtyAPI(self.msg, self.intent, self.entities, self.user_id, self.existing_user_score)
         self.response = v.response
         self.score = v.score
+
     def default(self):
         """
 
