@@ -192,11 +192,11 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
     if not response:
         if 'sorry'in msg.lower():
-            response.append({'type': 'text', 'message':'Its okay', 'stop':stop })
+            response.append({'type': 'text', 'message':'Its okay', 'stop':False})
         elif 'how are you' in msg.lower() or 'how are u' in msg.lower() or'how r u' in msg.lower():
-            response.append({'type': 'text', 'message':'I am fine!!!', 'stop':stop })
+            response.append({'type': 'text', 'message':'I am fine!!!', 'stop':False })
         else:
-            response.append({'type': 'text', 'message':'Didnt get it', 'stop':stop })
+            response.append({'type': 'text', 'message':'Didnt get it', 'stop':False})
 
     return response
 

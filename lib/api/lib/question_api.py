@@ -47,10 +47,10 @@ class QuestionApi():
 
         if msg:
             if self.quick_responses:
-                self.response.append({'type':'payload', 'text':msg, 'quick_replies':self.quick_responses, 'stop':False })
+                self.response.append({'type':'payload','message':{'text':msg, 'quick_replies':self.quick_responses}, 'stop':False })
             else:
                 self.response.append({'type':'text', 'message': msg, 'stop': False})
-
+        print self.response
 #        else:
 #            self.response.append('I think i started liking you can we meet somewhere? ')
 
@@ -76,8 +76,8 @@ class QuestionApi():
             },
               {
                   "content_type":"text",
-                    "title":"Architect",
-                    "payload":"Architect"
+                    "title":"Lawyer",
+                    "payload":"Lawyer"
             }]
 
         elif info == 'home_town':
