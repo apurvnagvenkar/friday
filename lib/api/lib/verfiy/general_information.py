@@ -62,7 +62,7 @@ class VerifyGeneralAPI():
             elif occupation_given_by_user.lower() == 'doctor':
                 msg = 'Whats up bro does your heartbeat speak? :D'
             elif occupation_given_by_user.lower() == 'lawyer':
-                msg = 'There are two kinds of lawyers — those who know the law and those who know the judge :D'
+                msg = 'There are two kinds of lawyers - those who know the law and those who know the judge :D'
 
         if msg:
             self.response.append({'type':'text', 'message':msg, 'stop':False})
