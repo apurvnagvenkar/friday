@@ -25,7 +25,7 @@ class AnswerGeneralAPI():
 
         :return:
         """
-        msg = 'My age is %s. ' % bot_persona['age']
+        msg = 'I am %s. years old. ' % bot_persona['age']
         self.response.append({'type':'text', 'message':msg, 'stop':False})
 
 
@@ -46,7 +46,7 @@ class AnswerGeneralAPI():
         self.response.append({'type':'text', 'message':msg, 'stop':False})
 
     def movie_api_call(self):
-        msg = 'My favouriate movie  is %s!!! Tujhe dekha tho hein jana sanam!!! ' % bot_persona['movie']
+        msg = 'My favouriate movie  is %s. Tujhe dekha tho hein jana sanam!!! ' % bot_persona['movie']
         self.response.append({'type':'text', 'message':msg, 'stop':False})
 
     def default(self):

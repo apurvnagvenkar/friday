@@ -39,7 +39,7 @@ class VerifyGeneralAPI():
             if age_given_by_user == users_age_on_fb:
                 msg = 'Oh nice!!!'
             elif age_given_by_user > users_age_on_fb:
-                msg =  'Why are you lieing to me? I can view your fb page. Its %s . \n Anyways i like people with older age.;)' % users_age_on_fb
+                msg =  'Why are you lying to me? I can view your fb page. Its %s . \n Anyways i like people with older age.;)' % users_age_on_fb
             elif age_given_by_user < users_age_on_fb:
                 msg =  'Why are you lieing to me? I can view your fb page. Its %s . \n Anyways i like people with lesser age.;)' % users_age_on_fb
             if msg:

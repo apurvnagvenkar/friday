@@ -59,11 +59,11 @@ class QuestionApi():
         if info == 'age':
             self.bot_intent.append('age')
             self.domain = 'general_information'
-            msg= 'hey wats your age?'
+            msg= 'what is your age?'
         elif info == 'occupation':
             self.bot_intent.append('occupation')
             self.domain = 'general_information'
-            msg= 'hey wats your occupation'
+            msg= 'What do you do for living?'
             self.quick_responses = [
                 {
                   "content_type":"text",
