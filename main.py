@@ -130,7 +130,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
             over_excited = False
         else:
-            response.append( {'type': 'text','message':'Don t  get overexcited', 'stop':False})
+            response.append( {'type': 'text','message':'Don\'t  get overexcited -_-', 'stop':False})
 
             print ('response sent for overexcitment %s ' % response)
             # call overexcited_api
@@ -138,7 +138,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
 
     if user_answered_bots_question is False and api_call is True:
         print 'user not answering bots question'
-        response.append({'type':'text', 'message':'Why are you not answering my questions?', 'stop':False})
+        response.append({'type':'text', 'message':'Why don\'t you answer my question?', 'stop':False})
         unanswered_questions_by_user += 1
         intents = previous_intents
         print 'unanswered questions by user %s' % unanswered_questions_by_user
@@ -162,16 +162,16 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
     if count_of_bot_asked_questions >= threshold_of_bot_asking_questions:
         print '\t\tYou are boring '
         response = []
-        response.append({'type':'text','message':'You are so boring!!! and dont want to chat with you. Why always I have to ask question','stop':True})
+        response.append({'type':'text','message':'Looks like you dont want to talk, you are boring me. Why always I have to ask question','stop':True, 'stop_message': 'C\'mon dude! Learn to initiate some conversation'})
         stop = True
     elif unanswered_questions_by_user >= threshold_of_unanswerd_questions_by_user:
         print 'You are not answering my questions'
         response = []
-        response.append({'type': 'text', 'message':'You not answering my question. Bye!!!', 'stop':True})
+        response.append({'type': 'text', 'message':'You not answering my question. Bye!', 'stop':True, 'stop_message':'Try not to ignore, it might upset her.'})
         stop = True
     elif intents and number_of_times_intent_called[intents[0]] >= data_model[domain][intents[0]]['count']:
         response = []
-        response.append({'type': 'text', 'message':'I am not dumb!! Why you asking same questions again and again?', 'stop':True})
+        response.append({'type': 'text', 'message':'I just told a while ago, why do you keep repeating? -_-', 'stop':True, 'stop_message': 'Pay attention to what you talk or she might feel you are not interested.'})
         stop = True
 
     data = {
@@ -191,7 +191,7 @@ def run_june_1(msg, user_id, intents=[], domain=None, position_so_far=0, unanswe
     print intents, ',', domain, ',', position_so_far, ',', unanswered_questions_by_user, ',', count_of_bot_asked_questions, ',', bots_intent, ',', bot_is_asking
 
     if not response:
-        response.append({'type': 'text', 'message':'Didnt get it', 'stop':stop })
+        response.append({'type': 'text', 'message':'What!?', 'stop':stop })
     print response
     return response
 
